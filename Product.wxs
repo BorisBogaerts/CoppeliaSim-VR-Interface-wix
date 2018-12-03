@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define vrepVIVE_TargetDir=$(var.vrepVIVE.TargetDir)?>
+	<Product Id="c2b42436-3106-40cd-9706-63769c5dde75" Name="V-REP VR interface " Language="1033" Version="1.0.0.0" Manufacturer="BorisBogaerts" UpgradeCode="6fd6d9e4-d7ca-4466-a0d0-a7a4749799a3">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)LICENSE.rtf"/>
+    <UIRef Id="WixUI_InstallDir"/>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes"/>
+
+		<Feature Id="ProductFeature" Title="V-REP VR interface " Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentGroupRef Id="modelFiles"/>
+      <ComponentGroupRef Id="luaFiles"/>
+      <ComponentGroupRef Id ="sceneFiles"/>
+    </Feature>
+    
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="V-REP VR interface">
+          <Directory Id="models" Name="Models" />
+          <Directory Id="scene" Name="Scene" />
+          <Directory Id="scripts" Name="Scripts" />
+        </Directory>
+      
+			</Directory>
+      
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="V-REP VR interface "/>
+      </Directory>
+      
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+    <ComponentGroup Id="modelFiles" Directory="models">
+      <Component Id="HTC_VIVE.ttm" Guid="*">
+        <File Id="HTC_VIVE.ttm" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\models\HTC_VIVE.ttm" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+    
+    <ComponentGroup Id="sceneFiles" Directory="scene">
+      <Component Id="Hello_controls.ttt" Guid="*">
+        <File Id="Hello_controls.ttt" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\scenes\Hello_controls.ttt" KeyPath="yes"/>
+      </Component>
+    
+    <Component Id="Hello_signals.ttt" Guid="*">
+        <File Id="Hello_signals.ttt" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\scenes\Hello_signals.ttt" KeyPath="yes"/>
+      </Component>
+        
+      <Component Id="Hello_vr_world.ttt" Guid="*">
+        <File Id="Hello_vr_world.ttt" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\scenes\Hello_vr_world.ttt" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+    
+    <ComponentGroup Id="luaFiles" Directory="scripts">
+      <Component Id="HTC_VIVE.lua" Guid="*">
+        <File Id="HTC_VIVE.lua" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\models\HTC_VIVE.lua" KeyPath="yes"/>
+      </Component>
+    
+      <Component Id="Camera_feeder.lua" Guid="*">
+        <File Id="Camera_feeder.lua" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\models\Camera_feeder.lua" KeyPath="yes"/>
+      </Component>
+    
+    <Component Id="voxelField.lua" Guid="*">
+        <File Id="voxelField.lua" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\models\voxelField.lua" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+    
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+			<Component Id="vrepVIVE.exe" Guid="be40e0f6-fe27-49b2-8ad0-d1025426cbde">
+			  <File Id="vrepVIVE.exe" Name="vrepVIVE.exe" Source="$(var.vrepVIVE_TargetDir)vrepVIVE.exe" />
+			</Component>
+
+      
+      <Component Id="openvr_api.dll" Guid="*">
+        <File Id="openvr_api.dll" Source="$(var.vrepVIVE_TargetDir)openvr_api.dll" KeyPath="yes"/>
+      </Component>
+
+      
+        
+      <Component Id="vtkChartsCore8.1.dll" Guid="*">
+        <File Id="vtkChartsCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkChartsCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkCommonColor8.1.dll" Guid="*">
+        <File Id="vtkCommonColor8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkCommonColor-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkCommonComputationalGeometry8.1.dll" Guid="*">
+        <File Id="vtkCommonComputationalGeometry8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkCommonComputationalGeometry-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkCommonCore8.1.dll" Guid="*">
+        <File Id="vtkCommonCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkCommonCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkCommonDataModel8.1.dll" Guid="*">
+        <File Id="vtkCommonDataModel8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkCommonDataModel-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkCommonExecutionModel8.1.dll" Guid="*">
+        <File Id="vtkCommonExecutionModel8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkCommonExecutionModel-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkCommonMath8.1.dll" Guid="*">
+        <File Id="vtkCommonMath8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkCommonMath-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkCommonMisc8.1.dll" Guid="*">
+        <File Id="vtkCommonMisc8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkCommonMisc-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkCommonSystem8.1.dll" Guid="*">
+        <File Id="vtkCommonSystem8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkCommonSystem-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkCommonTransforms8.1.dll" Guid="*">
+        <File Id="vtkCommonTransforms8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkCommonTransforms-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkDICOMParser8.1.dll" Guid="*">
+        <File Id="vtkDICOMParser8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkDICOMParser-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkDomainsChemistry8.1.dll" Guid="*">
+        <File Id="vtkDomainsChemistry8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkDomainsChemistry-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkDomainsChemistryOpenGL28.1.dll" Guid="*">
+        <File Id="vtkDomainsChemistryOpenGL28.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkDomainsChemistryOpenGL2-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersAMR8.1.dll" Guid="*">
+        <File Id="vtkFiltersAMR8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersAMR-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersCore8.1.dll" Guid="*">
+        <File Id="vtkFiltersCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersExtraction8.1.dll" Guid="*">
+        <File Id="vtkFiltersExtraction8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersExtraction-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersFlowPaths8.1.dll" Guid="*">
+        <File Id="vtkFiltersFlowPaths8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersFlowPaths-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersGeneral8.1.dll" Guid="*">
+        <File Id="vtkFiltersGeneral8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersGeneral-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersGeneric8.1.dll" Guid="*">
+        <File Id="vtkFiltersGeneric8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersGeneric-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersGeometry8.1.dll" Guid="*">
+        <File Id="vtkFiltersGeometry8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersGeometry-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersHybrid8.1.dll" Guid="*">
+        <File Id="vtkFiltersHybrid8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersHybrid-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersHyperTree8.1.dll" Guid="*">
+        <File Id="vtkFiltersHyperTree8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersHyperTree-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersImaging8.1.dll" Guid="*">
+        <File Id="vtkFiltersImaging8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersImaging-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersModeling8.1.dll" Guid="*">
+        <File Id="vtkFiltersModeling8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersModeling-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersParallel8.1.dll" Guid="*">
+        <File Id="vtkFiltersParallel8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersParallel-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersParallelImaging8.1.dll" Guid="*">
+        <File Id="vtkFiltersParallelImaging8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersParallelImaging-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersPoints8.1.dll" Guid="*">
+        <File Id="vtkFiltersPoints8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersPoints-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersProgrammable8.1.dll" Guid="*">
+        <File Id="vtkFiltersProgrammable8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersProgrammable-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersSMP8.1.dll" Guid="*">
+        <File Id="vtkFiltersSMP8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersSMP-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersSelection8.1.dll" Guid="*">
+        <File Id="vtkFiltersSelection8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersSelection-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersSources8.1.dll" Guid="*">
+        <File Id="vtkFiltersSources8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersSources-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersStatistics8.1.dll" Guid="*">
+        <File Id="vtkFiltersStatistics8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersStatistics-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersTexture8.1.dll" Guid="*">
+        <File Id="vtkFiltersTexture8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersTexture-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersTopology8.1.dll" Guid="*">
+        <File Id="vtkFiltersTopology8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersTopology-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkFiltersVerdict8.1.dll" Guid="*">
+        <File Id="vtkFiltersVerdict8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkFiltersVerdict-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkGeovisCore8.1.dll" Guid="*">
+        <File Id="vtkGeovisCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkGeovisCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOAMR8.1.dll" Guid="*">
+        <File Id="vtkIOAMR8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOAMR-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOCore8.1.dll" Guid="*">
+        <File Id="vtkIOCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOEnSight8.1.dll" Guid="*">
+        <File Id="vtkIOEnSight8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOEnSight-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOExodus8.1.dll" Guid="*">
+        <File Id="vtkIOExodus8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOExodus-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOExport8.1.dll" Guid="*">
+        <File Id="vtkIOExport8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOExport-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOExportOpenGL28.1.dll" Guid="*">
+        <File Id="vtkIOExportOpenGL28.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOExportOpenGL2-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOGeometry8.1.dll" Guid="*">
+        <File Id="vtkIOGeometry8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOGeometry-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOImage8.1.dll" Guid="*">
+        <File Id="vtkIOImage8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOImage-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOImport8.1.dll" Guid="*">
+        <File Id="vtkIOImport8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOImport-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOInfovis8.1.dll" Guid="*">
+        <File Id="vtkIOInfovis8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOInfovis-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOLSDyna8.1.dll" Guid="*">
+        <File Id="vtkIOLSDyna8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOLSDyna-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOLegacy8.1.dll" Guid="*">
+        <File Id="vtkIOLegacy8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOLegacy-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOMINC8.1.dll" Guid="*">
+        <File Id="vtkIOMINC8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOMINC-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOMovie8.1.dll" Guid="*">
+        <File Id="vtkIOMovie8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOMovie-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIONetCDF8.1.dll" Guid="*">
+        <File Id="vtkIONetCDF8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIONetCDF-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOPLY8.1.dll" Guid="*">
+        <File Id="vtkIOPLY8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOPLY-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOParallel8.1.dll" Guid="*">
+        <File Id="vtkIOParallel8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOParallel-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOParallelXML8.1.dll" Guid="*">
+        <File Id="vtkIOParallelXML8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOParallelXML-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOSQL8.1.dll" Guid="*">
+        <File Id="vtkIOSQL8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOSQL-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOTecplotTable8.1.dll" Guid="*">
+        <File Id="vtkIOTecplotTable8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOTecplotTable-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOVideo8.1.dll" Guid="*">
+        <File Id="vtkIOVideo8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOVideo-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOXML8.1.dll" Guid="*">
+        <File Id="vtkIOXML8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOXML-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkIOXMLParser8.1.dll" Guid="*">
+        <File Id="vtkIOXMLParser8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkIOXMLParser-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingColor8.1.dll" Guid="*">
+        <File Id="vtkImagingColor8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingColor-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingCore8.1.dll" Guid="*">
+        <File Id="vtkImagingCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingFourier8.1.dll" Guid="*">
+        <File Id="vtkImagingFourier8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingFourier-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingGeneral8.1.dll" Guid="*">
+        <File Id="vtkImagingGeneral8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingGeneral-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingHybrid8.1.dll" Guid="*">
+        <File Id="vtkImagingHybrid8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingHybrid-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingMath8.1.dll" Guid="*">
+        <File Id="vtkImagingMath8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingMath-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingMorphological8.1.dll" Guid="*">
+        <File Id="vtkImagingMorphological8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingMorphological-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingOpenGL28.1.dll" Guid="*">
+        <File Id="vtkImagingOpenGL28.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingOpenGL2-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingSources8.1.dll" Guid="*">
+        <File Id="vtkImagingSources8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingSources-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingStatistics8.1.dll" Guid="*">
+        <File Id="vtkImagingStatistics8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingStatistics-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkImagingStencil8.1.dll" Guid="*">
+        <File Id="vtkImagingStencil8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkImagingStencil-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkInfovisCore8.1.dll" Guid="*">
+        <File Id="vtkInfovisCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkInfovisCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkInfovisLayout8.1.dll" Guid="*">
+        <File Id="vtkInfovisLayout8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkInfovisLayout-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkInteractionImage8.1.dll" Guid="*">
+        <File Id="vtkInteractionImage8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkInteractionImage-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkInteractionStyle8.1.dll" Guid="*">
+        <File Id="vtkInteractionStyle8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkInteractionStyle-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkInteractionWidgets8.1.dll" Guid="*">
+        <File Id="vtkInteractionWidgets8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkInteractionWidgets-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkLocalExample8.1.dll" Guid="*">
+        <File Id="vtkLocalExample8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkLocalExample-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkNetCDF8.1.dll" Guid="*">
+        <File Id="vtkNetCDF8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkNetCDF-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkParallelCore8.1.dll" Guid="*">
+        <File Id="vtkParallelCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkParallelCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingAnnotation8.1.dll" Guid="*">
+        <File Id="vtkRenderingAnnotation8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingAnnotation-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingContext2D8.1.dll" Guid="*">
+        <File Id="vtkRenderingContext2D8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingContext2D-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingContextOpenGL28.1.dll" Guid="*">
+        <File Id="vtkRenderingContextOpenGL28.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingContextOpenGL2-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingCore8.1.dll" Guid="*">
+        <File Id="vtkRenderingCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingFreeType8.1.dll" Guid="*">
+        <File Id="vtkRenderingFreeType8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingFreeType-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingGL2PSOpenGL28.1.dll" Guid="*">
+        <File Id="vtkRenderingGL2PSOpenGL28.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingGL2PSOpenGL2-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingImage8.1.dll" Guid="*">
+        <File Id="vtkRenderingImage8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingImage-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingLOD8.1.dll" Guid="*">
+        <File Id="vtkRenderingLOD8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingLOD-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingLabel8.1.dll" Guid="*">
+        <File Id="vtkRenderingLabel8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingLabel-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingOpenGL28.1.dll" Guid="*">
+        <File Id="vtkRenderingOpenGL28.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingOpenGL2-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingOpenVR8.1.dll" Guid="*">
+        <File Id="vtkRenderingOpenVR8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingOpenVR-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingParallel8.1.dll" Guid="*">
+        <File Id="vtkRenderingParallel8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingParallel-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingSceneGraph8.1.dll" Guid="*">
+        <File Id="vtkRenderingSceneGraph8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingSceneGraph-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingVolume8.1.dll" Guid="*">
+        <File Id="vtkRenderingVolume8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingVolume-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkRenderingVolumeOpenGL28.1.dll" Guid="*">
+        <File Id="vtkRenderingVolumeOpenGL28.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkRenderingVolumeOpenGL2-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkViewsContext2D8.1.dll" Guid="*">
+        <File Id="vtkViewsContext2D8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkViewsContext2D-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkViewsCore8.1.dll" Guid="*">
+        <File Id="vtkViewsCore8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkViewsCore-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkViewsInfovis8.1.dll" Guid="*">
+        <File Id="vtkViewsInfovis8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkViewsInfovis-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkalglib8.1.dll" Guid="*">
+        <File Id="vtkalglib8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkalglib-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkexoIIc8.1.dll" Guid="*">
+        <File Id="vtkexoIIc8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkexoIIc-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkexpat8.1.dll" Guid="*">
+        <File Id="vtkexpat8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkexpat-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkfreetype8.1.dll" Guid="*">
+        <File Id="vtkfreetype8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkfreetype-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkgl2ps8.1.dll" Guid="*">
+        <File Id="vtkgl2ps8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkgl2ps-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkglew8.1.dll" Guid="*">
+        <File Id="vtkglew8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkglew-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkhdf58.1.dll" Guid="*">
+        <File Id="vtkhdf58.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkhdf5-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkhdf5_hl8.1.dll" Guid="*">
+        <File Id="vtkhdf5_hl8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkhdf5_hl-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkjpeg8.1.dll" Guid="*">
+        <File Id="vtkjpeg8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkjpeg-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkjsoncpp8.1.dll" Guid="*">
+        <File Id="vtkjsoncpp8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkjsoncpp-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtklibharu8.1.dll" Guid="*">
+        <File Id="vtklibharu8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtklibharu-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtklibxml28.1.dll" Guid="*">
+        <File Id="vtklibxml28.1.dll" Source="$(var.vrepVIVE_TargetDir)vtklibxml2-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtklz48.1.dll" Guid="*">
+        <File Id="vtklz48.1.dll" Source="$(var.vrepVIVE_TargetDir)vtklz4-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkmetaio8.1.dll" Guid="*">
+        <File Id="vtkmetaio8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkmetaio-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtknetcdfcpp8.1.dll" Guid="*">
+        <File Id="vtknetcdfcpp8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtknetcdfcpp-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkoggtheora8.1.dll" Guid="*">
+        <File Id="vtkoggtheora8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkoggtheora-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkpng8.1.dll" Guid="*">
+        <File Id="vtkpng8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkpng-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkproj48.1.dll" Guid="*">
+        <File Id="vtkproj48.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkproj4-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtksys8.1.dll" Guid="*">
+        <File Id="vtksys8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtksys-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtktiff8.1.dll" Guid="*">
+        <File Id="vtktiff8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtktiff-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkverdict8.1.dll" Guid="*">
+        <File Id="vtkverdict8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkverdict-8.1.dll" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="vtkzlib8.1.dll" Guid="*">
+        <File Id="vtkzlib8.1.dll" Source="$(var.vrepVIVE_TargetDir)vtkzlib-8.1.dll" KeyPath="yes"/>
+      </Component>
+      
+		</ComponentGroup>
+	</Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="5e6186af-85d1-4a8a-a190-4cefc0db953c">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+             Name="V-REP VR interface "
+           Description="This program lets you experience V-Rep in VR"
+            Target="[#vrepVIVE.exe]"
+                  WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\vrepVIVE" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+  </Fragment>
+</Wix>
