@@ -43,6 +43,10 @@
       <Component Id="HTC_VIVE.ttm" Guid="*">
         <File Id="HTC_VIVE.ttm" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\models\HTC_VIVE.ttm" KeyPath="yes"/>
       </Component>
+
+      <Component Id="voxelField.ttm" Guid="*">
+        <File Id="voxelField.ttm" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\models\voxelField.ttm" KeyPath="yes"/>
+      </Component>
     </ComponentGroup>
     
     <ComponentGroup Id="sceneFiles" Directory="scene">
@@ -56,6 +60,18 @@
         
       <Component Id="Hello_vr_world.ttt" Guid="*">
         <File Id="Hello_vr_world.ttt" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\scenes\Hello_vr_world.ttt" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="Hello_camera_coverage.ttt" Guid="*">
+        <File Id="Hello_camera_coverage.ttt" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\scenes\Hello_camera_coverage.ttt" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="VR_sensorPlacement_harbour.ttt" Guid="*">
+        <File Id="VR_sensorPlacement_harbour.ttt" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\scenes\VR_sensorPlacement_harbour.ttt" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="VR_sensorPlacement_office.ttt" Guid="*">
+        <File Id="VR_sensorPlacement_office.ttt" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\scenes\VR_sensorPlacement_office.ttt" KeyPath="yes"/>
       </Component>
     </ComponentGroup>
     
@@ -71,6 +87,10 @@
     <Component Id="voxelField.lua" Guid="*">
         <File Id="voxelField.lua" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\models\voxelField.lua" KeyPath="yes"/>
       </Component>
+
+    <Component Id="remoteApiConnections.txt" Guid="*">
+      <File Id="remoteApiConnections.txt" Source="D:\OneDrive - uantwerpen\MATLAB\Op3Mech toolbox\VREP_toolbox\remoteApiConnections.txt" KeyPath="yes"/>
+    </Component>
     </ComponentGroup>
     
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
@@ -81,7 +101,10 @@
 			<Component Id="vrepVIVE.exe" Guid="be40e0f6-fe27-49b2-8ad0-d1025426cbde">
 			  <File Id="vrepVIVE.exe" Name="vrepVIVE.exe" Source="$(var.vrepVIVE_TargetDir)vrepVIVE.exe" />
 			</Component>
-
+    
+    <Component Id="copyToVREP.bat" Guid="*">
+        <File Id="copyToVREP.bat" Source="D:\OneDrive - uantwerpen\C++\vrep_vr_installer\copyToVREP.bat" KeyPath="yes"/>
+      </Component>
       
       <Component Id="openvr_api.dll" Guid="*">
         <File Id="openvr_api.dll" Source="$(var.vrepVIVE_TargetDir)openvr_api.dll" KeyPath="yes"/>
