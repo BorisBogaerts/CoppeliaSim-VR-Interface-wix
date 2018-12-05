@@ -99,7 +99,7 @@
 				<!-- TODO: Insert files, registry keys, and other resources here. -->
 			<!-- </Component> -->
 			<Component Id="vrepVIVE.exe" Guid="be40e0f6-fe27-49b2-8ad0-d1025426cbde">
-			  <File Id="vrepVIVE.exe" Name="vrepVIVE.exe" Source="$(var.vrepVIVE_TargetDir)vrepVIVE.exe" />
+			  <File Id="vrepVIVE.exe" Name="vrepVIVE.exe" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\Release\vrepVIVE.exe" />
 			</Component>
     
     <Component Id="copyToVREP.bat" Guid="*">
