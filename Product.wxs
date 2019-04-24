@@ -44,8 +44,8 @@
         <File Id="HTC_VIVE.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\HTC_VIVE.ttm" KeyPath="yes"/>
       </Component>
 
-      <Component Id="voxelField.ttm" Guid="*">
-        <File Id="voxelField.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\voxelField.ttm" KeyPath="yes"/>
+      <Component Id="Interactive_Coverage_Visualization.ttm" Guid="*">
+        <File Id="Interactive_Coverage_Visualization.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\Interactive_Coverage_Visualization.ttm" KeyPath="yes"/>
       </Component>
     
     <Component Id="Attatch_Interactor.ttm" Guid="*">
@@ -54,6 +54,18 @@
       
       <Component Id="Drag_Interactor.ttm" Guid="*">
         <File Id="Drag_Interactor.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\Drag_Interactor.ttm" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="Ray_Interactor.ttm" Guid="*">
+        <File Id="Ray_Interactor.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\Ray_Interactor.ttm" KeyPath="yes"/>
+      </Component>
+
+      <Component Id="Path_Programming_Interactor.ttm" Guid="*">
+        <File Id="Path_Programming_Interactor.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\Path_Programming_Interactor.ttm" KeyPath="yes"/>
+      </Component>
+      
+      <Component Id="vr_menu.ttm" Guid="*">
+        <File Id="vr_menu.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\vr_menu.ttm" KeyPath="yes"/>
       </Component>
     </ComponentGroup>
     
@@ -614,14 +626,19 @@
 		</ComponentGroup>
 	</Fragment>
 
+  
+  
   <Fragment>
+    <Icon Id="the.ico" SourceFile="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\geen_titel_1_OHv_icon.ico" />
     <DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" Guid="5e6186af-85d1-4a8a-a190-4cefc0db953c">
         <Shortcut Id="ApplicationStartMenuShortcut"
              Name="V-REP VR interface "
            Description="This program lets you experience V-Rep in VR"
             Target="[#vrepVIVE.exe]"
-                  WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+                  WorkingDirectory="APPLICATIONROOTDIRECTORY"
+                  Icon ="the.ico"/>
+        
         <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
         <RegistryValue Root="HKCU" Key="Software\vrepVIVE" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
