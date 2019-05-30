@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define vrepVIVE_TargetDir=D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\Release\?>
-	<Product Id="c2b42436-3106-40cd-9706-63769c5dde75" Name="V-REP VR interface " Language="1033" Version="2.0.0.0" Manufacturer="BorisBogaerts" UpgradeCode="6fd6d9e4-d7ca-4466-a0d0-a7a4749799a3">
+	<Product Id="c2b42436-3106-40cd-9706-63769c5dde75" Name="V-REP VR interface " Language="1033" Version="2.0.0.1" Manufacturer="BorisBogaerts" UpgradeCode="6fd6d9e4-d7ca-4466-a0d0-a7a4749799a3">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)LICENSE.rtf"/>
@@ -44,6 +44,10 @@
         <File Id="HTC_VIVE.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\HTC_VIVE.ttm" KeyPath="yes"/>
       </Component>
 
+      <Component Id="VR360_cam.ttm" Guid="*">
+        <File Id="VR360_cam.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\VR360_cam.ttm" KeyPath="yes"/>
+      </Component>
+      
       <Component Id="Interactive_Coverage_Visualization.ttm" Guid="*">
         <File Id="Interactive_Coverage_Visualization.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\Interactive_Coverage_Visualization.ttm" KeyPath="yes"/>
       </Component>
@@ -121,6 +125,10 @@
 			<Component Id="vrepVIVE.exe" Guid="be40e0f6-fe27-49b2-8ad0-d1025426cbde">
 			  <File Id="vrepVIVE.exe" Name="vrepVIVE.exe" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\Release\V-REP VR Interface.exe" />
 			</Component>
+
+      <Component Id="VR360_cam.exe" Guid="*">
+        <File Id="VR360_cam.exe" Name="VR360_cam.exe" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\Release\VR360_cam.exe" />
+      </Component>
       
       <Component Id="vrep_vtk_engine.lib" Guid="*">
 			  <File Id="vrep_vtk_engine.lib" Name="vrep_vtk_engine.lib" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\Release\vrep_vtk_engine.lib" />
