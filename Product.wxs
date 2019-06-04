@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define vrepVIVE_TargetDir=D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\Release\?>
-	<Product Id="c2b42436-3106-40cd-9706-63769c5dde75" Name="V-REP VR interface " Language="1033" Version="2.0.0.1" Manufacturer="BorisBogaerts" UpgradeCode="6fd6d9e4-d7ca-4466-a0d0-a7a4749799a3">
+	<Product Id="c2b42436-3106-40cd-9706-63769c5dde75" Name="V-REP VR interface " Language="1033" Version="2.1.0.0" Manufacturer="BorisBogaerts" UpgradeCode="6fd6d9e4-d7ca-4466-a0d0-a7a4749799a3">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)LICENSE.rtf"/>
@@ -46,6 +46,10 @@
 
       <Component Id="VR360_cam.ttm" Guid="*">
         <File Id="VR360_cam.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\VR360_cam.ttm" KeyPath="yes"/>
+      </Component>
+      
+      <Component Id="flickerLess_floor.ttm" Guid="*">
+        <File Id="flickerLess_floor.ttm" Source="D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\V-REP data\Models\flickerLess_floor.ttm" KeyPath="yes"/>
       </Component>
       
       <Component Id="Interactive_Coverage_Visualization.ttm" Guid="*">
