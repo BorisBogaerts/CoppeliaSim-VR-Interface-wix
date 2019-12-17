@@ -1,7 +1,7 @@
 echo off
 
-REM (this is a comment) Change the following string to your V-REP intallation location
-SET vrepLocation=C:\Program Files\V-REP3\V-REP_PRO_EDU
+REM (this is a comment) Change the following string to your CoppeliaSim intallation location
+SET vrepLocation=C:\Program Files\CoppeliaRobotics\CoppeliaSimEdu
 REM Do not modify anything after this comment-
 SET luaLocation=%vrepLocation%
 SET modelLocation=%vrepLocation%\models

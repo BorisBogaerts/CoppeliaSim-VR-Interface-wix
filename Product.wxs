@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define vrepVIVE_TargetDir=D:\OneDrive - uantwerpen\C++\discrete_scan_parallel\Release\?>
-	<Product Id="c2b42436-3106-40cd-9706-63769c5dde75" Name="V-REP VR interface " Language="1033" Version="2.1.0.0" Manufacturer="BorisBogaerts" UpgradeCode="6fd6d9e4-d7ca-4466-a0d0-a7a4749799a3">
+	<Product Id="c2b42436-3106-40cd-9706-63769c5dde75" Name="CoppeliaSim VR interface " Language="1033" Version="2.2.0.0" Manufacturer="BorisBogaerts" UpgradeCode="6fd6d9e4-d7ca-4466-a0d0-a7a4749799a3">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)LICENSE.rtf"/>
@@ -10,7 +10,7 @@
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes"/>
 
-		<Feature Id="ProductFeature" Title="V-REP VR interface " Level="1">
+		<Feature Id="ProductFeature" Title="CoppeliaSim VR interface " Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
       <ComponentRef Id="ApplicationShortcut" />
       <ComponentGroupRef Id="modelFiles"/>
@@ -23,7 +23,7 @@
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="V-REP VR interface">
+				<Directory Id="INSTALLFOLDER" Name="CoppeliaSim VR interface">
           <Directory Id="models" Name="Models" />
           <Directory Id="scene" Name="Scene" />
           <Directory Id="scripts" Name="Scripts" />
@@ -32,7 +32,7 @@
 			</Directory>
       
       <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="V-REP VR interface "/>
+        <Directory Id="ApplicationProgramsFolder" Name="CoppeliaSim VR interface "/>
       </Directory>
       
 		</Directory>
@@ -645,8 +645,8 @@
     <DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" Guid="5e6186af-85d1-4a8a-a190-4cefc0db953c">
         <Shortcut Id="ApplicationStartMenuShortcut"
-             Name="V-REP VR interface "
-           Description="This program lets you experience V-Rep in VR"
+             Name="CoppeliaSim VR interface "
+           Description="This program lets you experience CoppeliaSim in VR"
             Target="[#vrepVIVE.exe]"
                   WorkingDirectory="APPLICATIONROOTDIRECTORY"
                   Icon ="the.ico"/>
